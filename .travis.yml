@@ -14,3 +14,8 @@ after_success:
   - docker build -t hysenberisha/multi-nginx ./nginx
   - docker build -t hysenberisha/multi-server ./server
   - docker build -t hysenberisha/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push hysenberisha/multi-client
+  - docker push hysenberisha/multi-nginx
+  - docker push hysenberisha/multi-server
+  - docker push hysenberisha/multi-worker
